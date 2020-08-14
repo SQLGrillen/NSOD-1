@@ -1,1 +1,1 @@
-# NSOD-1
+# New Stars of Data 2020
