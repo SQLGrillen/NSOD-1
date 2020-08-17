@@ -1,0 +1,62 @@
+﻿<deadlock>
+ <victim-list>
+  <victimProcess id="process217594c1c28" />
+ </victim-list>
+ <process-list>
+  <process id="process217594c1c28" taskpriority="0" logused="412" waitresource="OBJECT: 7:5575058:0 " waittime="708" ownerId="156491" transactionname="user_transaction" lasttranstarted="2020-08-05T21:59:10.233" XDES="0x2175a18c420" lockMode="IX" schedulerid="2" kpid="1016" status="suspended" spid="53" sbid="0" ecid="0" priority="0" trancount="2" lastbatchstarted="2020-08-05T22:00:55.543" lastbatchcompleted="2020-08-05T22:00:55.540" lastattention="2020-08-05T21:53:51.333" clientapp="Microsoft SQL Server Management Studio - Query" hostname="vm-W10Managemen" hostpid="7184" loginname="NSOD-Admin" isolationlevel="read committed (2)" xactid="156491" currentdb="7" currentdbname="StackOverflow2010" lockTimeout="4294967295" clientoption1="671090784" clientoption2="390200">
+   <executionStack>
+    <frame procname="adhoc" line="1" stmtstart="38" stmtend="156" sqlhandle="0x020000005c3e942abda440eddd0c0fc28c46c776c810991a0000000000000000000000000000000000000000">
+unknown    </frame>
+    <frame procname="adhoc" line="1" stmtend="96" sqlhandle="0x0200000053b741009f16fabd858d9d0b30fbdc29950ed2230000000000000000000000000000000000000000">
+unknown    </frame>
+   </executionStack>
+   <inputbuf>
+update Comments set Score += 1
+where score &gt; 150   </inputbuf>
+  </process>
+  <process id="process2175e639468" taskpriority="0" logused="47652" waitresource="OBJECT: 7:2121058592:0 " waittime="3937" ownerId="156700" transactionname="user_transaction" lasttranstarted="2020-08-05T22:00:36.440" XDES="0x217585d0420" lockMode="IX" schedulerid="3" kpid="3400" status="suspended" spid="56" sbid="0" ecid="0" priority="0" trancount="2" lastbatchstarted="2020-08-05T22:00:52.320" lastbatchcompleted="2020-08-05T22:00:52.317" lastattention="2020-08-05T22:00:00.163" clientapp="Microsoft SQL Server Management Studio - Query" hostname="vm-W10Managemen" hostpid="7184" loginname="NSOD-Admin" isolationlevel="read committed (2)" xactid="156700" currentdb="7" currentdbname="StackOverflow2010" lockTimeout="4294967295" clientoption1="671090784" clientoption2="390200">
+   <executionStack>
+    <frame procname="adhoc" line="1" stmtend="100" sqlhandle="0x02000000060afa39eab170e8fcb61ca2c9b7dcccf9b0cebd0000000000000000000000000000000000000000">
+unknown    </frame>
+   </executionStack>
+   <inputbuf>
+update Badges set UserId += 1
+where name like 'A%'   </inputbuf>
+  </process>
+  <process id="process2175e6388c8" taskpriority="0" logused="3684236" waitresource="KEY: 7:72057594039304192 (8194443284a0)" waittime="6867" ownerId="156411" transactionname="user_transaction" lasttranstarted="2020-08-05T21:58:54.750" XDES="0x217604c4420" lockMode="U" schedulerid="3" kpid="4560" status="suspended" spid="61" sbid="0" ecid="0" priority="0" trancount="2" lastbatchstarted="2020-08-05T22:00:49.393" lastbatchcompleted="2020-08-05T22:00:49.390" lastattention="1900-01-01T00:00:00.390" clientapp="Microsoft SQL Server Management Studio - Query" hostname="vm-W10Managemen" hostpid="7184" loginname="NSOD-Admin" isolationlevel="read committed (2)" xactid="156411" currentdb="7" currentdbname="StackOverflow2010" lockTimeout="4294967295" clientoption1="671090784" clientoption2="390200">
+   <executionStack>
+    <frame procname="adhoc" line="1" stmtend="118" sqlhandle="0x02000000ca6f962e6a2a56d38ce8100cad6f4b42b55d973a0000000000000000000000000000000000000000">
+unknown    </frame>
+   </executionStack>
+   <inputbuf>
+update VoteTypes set name = Name + '2'
+where name like 'A%'   </inputbuf>
+  </process>
+ </process-list>
+ <resource-list>
+  <objectlock lockPartition="0" objid="5575058" subresource="FULL" dbid="7" objectname="StackOverflow2010.dbo.Comments" id="lock2172d8b0080" mode="X" associatedObjectId="5575058">
+   <owner-list>
+    <owner id="process2175e639468" mode="X" />
+   </owner-list>
+   <waiter-list>
+    <waiter id="process217594c1c28" mode="IX" requestType="wait" />
+   </waiter-list>
+  </objectlock>
+  <objectlock lockPartition="0" objid="2121058592" subresource="FULL" dbid="7" objectname="StackOverflow2010.dbo.Badges" id="lock21743c7d980" mode="X" associatedObjectId="2121058592">
+   <owner-list>
+    <owner id="process2175e6388c8" mode="X" />
+   </owner-list>
+   <waiter-list>
+    <waiter id="process2175e639468" mode="IX" requestType="wait" />
+   </waiter-list>
+  </objectlock>
+  <keylock hobtid="72057594039304192" dbid="7" objectname="StackOverflow2010.dbo.VoteTypes" indexname="PK_VoteType__Id" id="lock2172aa48480" mode="X" associatedObjectId="72057594039304192">
+   <owner-list>
+    <owner id="process217594c1c28" mode="X" />
+   </owner-list>
+   <waiter-list>
+    <waiter id="process2175e6388c8" mode="U" requestType="wait" />
+   </waiter-list>
+  </keylock>
+ </resource-list>
+</deadlock>
